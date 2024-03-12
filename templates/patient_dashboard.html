@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{ % load static % }
+
+{% block body %}
+
+<div class="doctor-dashboard">
+    <div class="inner_page">
+        <h1>Your Designation is {{current_user.designation}}</h1>
+        <h2>Hello {{current_user.username}}</h2>
+
+        <div class="detail-box">
+            <div class="img">
+                <img src="media/{{current_user.profile_picture}}" alt="">
+            </div>
+            <div class="info">
+                <p>Name: {{ current_user.first_name }} {{current_user.last_name}}</p>
+                <p>Email: {{ current_user.email }}</p>
+                <p>Address Line 1 : {{current_user.address_line1}}</p>
+                <p>City : {{current_user.city}}</p>
+                <p>State : {{current_user.state}}</p>
+                <p>Pincode : {{current_user.pincode}}</p>
+            </div>
+        </div>
+
+        <div class="logout-btn">
+            <a href="{% url 'logout' %}" class="sub-mnu-link">Logout</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

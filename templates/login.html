@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<section class="total">
+    <div class="login signup">
+        <h1 class="head sign">Login Here</h1>
+        <form class="detail" action="" method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn-login btn-signup" type="submit" value="Login">Login</button>
+            <p class="redirect">Create a account?<a class="create" href="{% url 'signup' %}">&nbsp;Sign Up!</a></p>
+        </form>
+    </div>
+</section>
+
+{% endblock body %}

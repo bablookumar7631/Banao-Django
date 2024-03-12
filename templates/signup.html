@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{ % load static % }
+
+{% block body %}
+<section class="total">
+    <div class="signup">
+        <h1 class="sign">Signup Here</h1>
+        <form class="foram" action="" method="post">{% csrf_token %}
+            <div class="design">
+                <div class="form-field">
+                    {{ form.first_name }}
+                </div>
+                <div class="form-field">
+                    {{ form.last_name }}
+                </div>
+            </div>
+
+
+            <div class="design-d">
+                <div class="form-field">
+                    <label for="id_designation">Designation:</label>
+                    {{ form.designation }}
+                </div>
+                <div class="form-field prof-d">
+                    <label for="id_last_name">Profile Picture:</label>{{ form.profile_picture }}
+                </div>
+            </div>
+            
+            <div class="design">
+                <div class="form-field">
+                    {{ form.username }}
+                </div>
+                <div class="form-field">
+                    {{ form.email }}
+                    {{ form.email.errors }}
+                </div>
+            </div>
+            
+
+            <div class="design">
+                <div class="form-field">
+                    {{ form.address_line1 }}
+                    {{ form.address_line1.errors }}
+                </div>
+                <div class="form-field">
+                    {{ form.city }}
+                    {{ form.city.errors }}
+                </div>
+            </div>
+
+            <div class="design">
+                <div class="form-field">
+                    {{ form.state }}
+                    {{ form.state.errors }}
+                </div>
+                <div class="form-field">
+                    {{ form.pincode }}
+                    {{ form.pincode.errors }}
+                </div>
+            </div>
+
+            <div class="design">
+                <div class="form-field">
+                    {{ form.password }}
+                    {{form.password.errors}}
+                </div>
+                <div class="form-field">
+                    {{ form.confirm_password }}
+                    {{ form.confirm_password.errors }}
+                </div>
+            </div>
+
+
+            <button class="btn-signup" type="submit" value="Signup">Signup</button>
+            <p class="redirect">i have already account?<a class="create" href="{% url 'login' %}">&nbsp;Login here!</a></p>
+        </form>  
+    </div>
+</section>
+{% endblock body %}
