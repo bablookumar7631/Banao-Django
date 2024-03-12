@@ -8,8 +8,8 @@ from .models import UserProfile
 
 
 # Create your views here.
-def home_page(request):
-    return render(request, 'home.html')
+def index_page(request):
+    return render(request, 'index.html')
 
 
 
