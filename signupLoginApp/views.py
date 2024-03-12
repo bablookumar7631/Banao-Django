@@ -1,4 +1,3 @@
-from django.contrib.auth.hashers import make_password
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .forms import SignUpForm, LoginForm
@@ -28,10 +27,11 @@ def signup(request):
             city = form_obj.cleaned_data['city']
             state = form_obj.cleaned_data['state']
             pincode = form_obj.cleaned_data['pincode']
+            profile_picture = form_obj.cleaned_data['profile_picture']
             
             User.objects.create_user(username=username, password=password,first_name=first_name,last_name=last_name)
             
-            profile = UserProfile.objects.create(username=username, password=password,
+            profile = UserProfile.objects.create(username=username, password=password, profile_picture=profile_picture, 
                                                  first_name=first_name,email=email,address_line1=address_line1,
                                                  last_name=last_name,designation=designation,city=city,state=state,pincode=pincode)
             
@@ -73,10 +73,14 @@ def doctor_dashboard(request):
     return render(request, 'doctor_dashboard.html')
 
 
+
+
 def patient_dashboard(request):
     return render(request, 'patient_dashboard.html')
 
-        
+
+
+
 def logoutPage(request):
     logout(request)
     return redirect('/')
