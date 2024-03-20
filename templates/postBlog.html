@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{ % load static % }
+
+
+{% block body %}
+
+<div class="doc-btn">
+    <button class="doc-view"><a href="{% url 'blogList' %}">View Posts</a></button>
+    <button class="doc-view"><a href="{% url 'draftList' %}">View Drafts</a></button>
+    <button class="doc-logout"><a href="{% url 'logout' %}">Logout</a></button>
+</div>
+
+<div class="post-blog">
+    <h1 class="post-head">Create Your Post</h1>
+    <div class="post-blog-in">
+        <form action="" method="POST" enctype="multipart/form-data" id="postForm">{% csrf_token %}
+            <label for="postTitle">Title:</label>
+            <input type="text" id="postTitle" name="postTitle" class="blogContent">
+
+            <label for="postImg">Image:</label>
+            <input type="file" id="imageUpload" name="imageUpload" class="blogContent" accept="image/*">
+
+            <label for="illness">Category:</label>
+            <select name="category" id="illness" class="blogContent">
+                {% for cat in categories %}
+                <option value="{{cat.id}}">{{cat.name}}</option>
+                {% endfor %}
+            </select>
+            
+
+            <label for="summary">Summary:</label>
+            <textarea id="summary" name="summary" rows="2" cols="70" width="100%" class="blogContent"></textarea>
+
+            <label for="content">Content:</label>
+            <textarea id="content" name="content" rows="4" cols="70" class="blogContent"></textarea>
+
+            <input type="hidden" name="draft_id" id="draft_id" value="">
+
+            <input class="postBlog-btn" type="submit" value="Post">
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block js %}
+
+<script>
+    $(document).on('change','.blogContent', function(){
+         
+
+            var form = $('#postForm');
+
+            $.ajax({
+                type: "POST",
+                url: '/storeDraft',
+                data: form.serialize(), 
+                success: function(data)
+                {
+                    $('#draft_id').val(data['draftId']);
+                }
+            });
+
+    })
+</script>
+
+{% endblock %}

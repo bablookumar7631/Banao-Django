@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{ % load static % }
+
+
+
+{% block body %}
+
+<div class="post-blog">
+    <div class="blogDetail-in">
+        <div class="blogDetail-under">
+            <div class="top">
+                <div class="top-left">
+                    <img src="{{blogDetail.image.url}}" alt="post image">
+                </div>
+                <div class="top-right">
+                    <p class="post-title">{{blogDetail.title}}</p>
+                    <p class="post-category">{{blogDetail.category.name}}</p>
+                    <p class="post-summary">{{blogDetail.summary}}</p>
+                </div>
+            </div>
+            <p class="line"></p>
+
+            <div class="bottom">
+                <p class="post-content">{{blogDetail.content}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

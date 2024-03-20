@@ -2,7 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .forms import SignUpForm, LoginForm
 from django.contrib.auth.models import User
-from .models import UserProfile
+from .models import *
+from .filters import *
+from django.http import JsonResponse,HttpResponse
+
 
 
 
@@ -66,6 +69,7 @@ def user_login(request):
     else:
         form = LoginForm()
     return render(request, 'login.html',{'form':form})
+    
 
 
 
@@ -84,3 +88,111 @@ def patient_dashboard(request):
 def logoutPage(request):
     logout(request)
     return redirect('/')
+
+
+
+def createPost_Page(request):
+    if request.method == "POST":
+        if request.POST.get('draft_id'):
+            draft = Draft.objects.filter(pk=int(request.POST.get('draft_id'))).delete()
+        title = request.POST.get('postTitle')
+        image = request.FILES.get('imageUpload')
+        category = request.POST.get('category')
+        summary = request.POST.get('summary')
+        content = request.POST.get('content')
+
+        post = BlogPost(title=title, image=image, category_id=category, summary=summary, content=content, user=request.user)
+        post.save()
+        return redirect('blogList')
+    
+    if request.user.is_authenticated and UserProfile.objects.filter(username=request.user).first().designation == 'doctor':
+        categories = Category.objects.all()
+        return render(request, 'postBlog.html', {'categories': categories})
+    else:
+        return redirect('blogList')
+        
+        
+
+
+def createCategory_Page(request):
+    if request.method == "POST":
+        name = request.POST.get('name')
+        
+        cat = Category(name=name)
+        cat.save()
+        return redirect('blogList')
+    
+    if request.user.is_authenticated and UserProfile.objects.filter(username=request.user).first().designation == 'doctor':
+        return render(request, 'addCategory.html')
+    else:
+        return redirect('blogList')
+
+
+def blogList_Page(request):
+    if request.method == 'GET' and len(request.GET)>0 and request.GET.get('category') != '':
+        posts = BlogPost.objects.filter(category_id = request.GET.get('category'))
+    else:
+        posts= BlogPost.objects.all()
+    categories = Category.objects.all()
+    return render(request, 'blogList.html', {'posts':posts, 'categories':categories})
+
+
+
+def blogDetail_Page(request, id):
+    blogDetail = BlogPost.objects.get(pk=id)
+    return render(request, 'blogDetail.html', {'blogDetail':blogDetail})
+
+
+def storeDraft(request):
+    if request.method == 'POST':
+        title = request.POST.get('postTitle')
+        image = request.FILES.get('imageUpload')
+        category_id = request.POST.get('category')
+        summary = request.POST.get('summary')
+        content = request.POST.get('content')
+
+        if request.POST.get('draft_id'):
+            # Update existing draft
+            draft_id = int(request.POST.get('draft_id'))
+            draft = Draft.objects.get(pk=draft_id)
+            draft.title = title
+            draft.image = image
+            draft.category_id = category_id
+            draft.summary = summary
+            draft.content = content
+            draft.user = request.user
+            draft.save()
+        else:
+            # Create new draft
+            draft = Draft.objects.create(
+                title=title,
+                image=image,
+                category_id=category_id,
+                summary=summary,
+                content=content,
+                user = request.user
+            )
+
+        return JsonResponse({'draftId': draft.id}, safe=False) 
+    else:
+        return JsonResponse({'error': 'Method not allowed'}, status=405)
+
+
+
+def editDraft(request, id):
+    if request.user.is_authenticated and UserProfile.objects.filter(username=request.user).first().designation == 'doctor':
+        categories = Category.objects.all()
+        draft = Draft.objects.filter(pk=id).first()
+        return render(request, 'createDraft.html', {'categories': categories, 'draft':draft})
+    else:
+        return redirect('blogList')
+    
+
+
+def draftList(request):
+    if request.method == 'GET' and len(request.GET)>0 and request.GET.get('category') != '':
+        posts = Draft.objects.filter(category_id = request.GET.get('category'))
+    else:
+        posts= Draft.objects.all()
+    categories = Category.objects.all()
+    return render(request, 'draftList.html', {'posts':posts, 'categories':categories})

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{ % load static % }
+
+
+{% block body %}
+
+<div class="post-blog">
+    <h1 class="post-head">Create Your Post</h1>
+    <div class="post-blog-in">
+        <form action="" method="POST">{% csrf_token %}
+            <label for="name">Catgory Name:</label>
+            <input type="text" id="name" name="name">
+
+            <input class="postBlog-btn" type="submit" value="Post">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

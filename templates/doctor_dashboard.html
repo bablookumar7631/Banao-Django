@@ -3,6 +3,12 @@
 
 {% block body %}
 
+<div class="doc-btn">
+    <button class="doc-create"><a href="{% url 'createPost' %}">Create Post</a></button>
+    <button class="doc-view"><a href="{% url 'blogList' %}">View Post</a></button>
+    <button class="doc-view"><a href="{% url 'draftList' %}">Drafts</a></button>
+</div>
+
 <div class="doctor-dashboard">
     <div class="inner_page">
         <h1>Your Designation is {{current_user.designation}}</h1>

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{ % load static % }
+
+
+{% block body %}
+
+<div class="blogListSelect">
+    <form action="" method="get">{% csrf_token %}
+        <label for="illness">Category:</label>
+            <select name="category">
+                <option value="">All Post</option>
+                {% for cat in categories %}
+                    <option value="{{ cat.id }}">{{ cat.name }}</option>
+                {% endfor %}
+            </select>
+
+        <input type="submit" value="apply Filter"/>
+    </form>
+</div>
+
+
+
+
+<div class="blogList">
+    <div class="bloglist-in">
+        
+        {% if posts %}
+        {% for post in posts %}
+        <a href="{% url 'blogDetail' post.id %}" class="make_link">
+            <div class="singlePost">
+                <div class="left">
+                    <img src="media/{{post.image}}" alt="">
+                </div>
+                <div class="right">
+                    <p class="post-title">{{post.title}}</p>
+                    <p class="post-category">{{post.category.name}}</p>
+                    <p class="post-summary">{{ post.summary | truncatewords:15}}...</p>
+                    <p class="post-content">{{post.content | truncatewords:25}}...</p>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+        {% else %}
+            <p>No Blog Found!</p> 
+        {% endif %}
+        
+    </div>
+</div>
+
+{% endblock %}

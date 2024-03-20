@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{ % load static % }
+
+
+{% block body %}
+
+<div class="blogListSelect">
+    <form action="" method="get">{% csrf_token %}
+        <label for="illness">Category:</label>
+            <select name="category">
+                <option value="">All Post</option>
+                {% for cat in categories %}
+                    <option value="{{ cat.id }}">{{ cat.name }}</option>
+                {% endfor %}
+            </select>
+
+        <input type="submit" value="apply Filter"/>
+    </form>
+</div>
+
+
+
+
+<div class="blogList">
+    <div class="bloglist-in">
+        {% if posts %}
+            {% for post in posts %}
+                <div class="singlePost">
+                    <div class="left">
+                        <img src="media/{{post.image}}" alt="">
+                    </div>
+                    <div class="right">
+                        <p class="post-title">{{post.title}}</p>
+                        <p class="post-category">{{post.category.name}}</p>
+                        <p class="post-summary">{{ post.summary | truncatewords:15}}...</p>
+                        <p class="post-content">{{post.content | truncatewords:25}}...</p>
+                        <a href="/editDraft/{{post.id}}">Edit Draft</a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h1>No Draft Found!</h1> 
+        {% endif %}
+        
+    </div>
+</div>
+
+{% endblock %}

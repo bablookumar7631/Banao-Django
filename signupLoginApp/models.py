@@ -1,5 +1,6 @@
 from django.db import models
 from django import forms
+from django.contrib.auth.models import User
 
 # Create your models here.
 class UserProfile(models.Model):
@@ -18,4 +19,40 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.username + " - " + self.designation
+    
 
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=50)
+
+
+# blog model
+class BlogPost(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    title = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='blogPost')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    summary = models.TextField(max_length=500)
+    content = models.TextField()
+    createdAt = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title + " -> " + self.category
+
+
+
+# dreaf model
+class Draft(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    title = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='blogPost')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    summary = models.TextField(max_length=500)
+    content = models.TextField()
+    createdAt = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title + " -> " + self.category

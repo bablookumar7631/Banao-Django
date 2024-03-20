@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 body{
@@ -41,7 +42,7 @@ button a{
 }
 /* patient dashboard */
 .doctor-dashboard{
-    margin-top: 8rem;
+    margin-top: 5rem;
     display: flex;
     justify-content: center;
 }
@@ -66,10 +67,33 @@ button a{
     width: 230px;
     height: 230px;
     border-radius: 12px;
+    margin-right: 3rem;
 }
 .info p{
     font-size: 1.5rem;
 }
+
+/* doctor */
+div.doc-btn{
+    top: 10px;
+    right: 10px;
+    position: absolute;
+}
+.doc-create,.doc-view,.doc-logout{
+    background-color: aliceblue;
+    padding: .5rem 1.5rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+.doc-create a,.doc-view a{
+    color: black;
+}
+.doc-logout{
+    background-color: rgb(255, 30, 30);
+    color: #fff;
+}
+
 
 /* signup */
 .total{
@@ -143,3 +167,151 @@ input{
     border-radius: 12px;
     font-size: 20px;
   }
+
+
+
+/* postBlog */
+.post-blog{
+    width: 50%;
+    background-color: rgb(140, 173, 186);
+    margin: 0 auto;
+    padding: 2rem 3rem;
+    margin-top: 4rem;
+    border-radius: 15px;
+}
+.post-head{
+    text-align: center;
+    margin-bottom: .6rem;
+}
+
+.post-blog-in form{
+    display: flex;
+    flex-direction: column;
+}
+label{
+    margin-top: .5rem;
+    font-size: 1rem;
+}
+textarea{
+    border-radius: 5px;
+    font-size: 15px;
+    padding: 10px;
+    outline: none;
+}
+select{
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 15px;
+    outline: none;
+}
+input{
+    padding: 10px;
+    border: 0px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+    outline: none;
+    line-height: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.postBlog-btn{
+    background-color: rgb(1, 170, 1);
+    margin-top: .8rem;
+    cursor: pointer;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 550;
+}
+
+
+
+/* blogList */
+.blogListSelect{
+    top: 10px;
+    right: 10px;
+    position: fixed;
+}
+.make_link{
+    text-decoration: none;
+}
+.blogList{
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 4rem;
+    padding: 1rem;
+}
+
+.left{
+    width: 250px;
+    height: 200px;
+    margin-right: 2rem;
+    margin-left: 0;
+}
+.left img{
+    margin-left: 0;
+    width: 250px;
+    height: 200px;
+}
+.singlePost{
+    background-color: rgb(140, 173, 186);
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 200px;
+}
+.post-title{
+    font-size: larger;
+    font-weight: 550;
+    color: black;
+}
+.post-category{
+    font-size: large;
+    font-weight: 550;
+    color: black;
+}
+.post-summary{
+    font-size: 17px;
+    color: black;
+}
+.post-content{
+    color: rgb(60, 60, 60);
+}
+.right p{
+    margin-bottom: .4rem;
+    margin-right: 1rem;
+}
+
+/* blog details */
+.top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.line{
+    width: 100%;
+    border: 1px solid rgb(99, 99, 99);
+    margin: .5rem 0;
+}
+.top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.top-left {
+    flex-basis: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.top-right{
+    flex-basis: 50%;
+    margin-bottom: .5rem;
+}
+.top-left img{
+    width: 250px;
+    height: 250px;
+    border-radius: 10px;
+}
