@@ -3,9 +3,9 @@
 
 {% block body %}
 
-<div class="doc-btn">
+<!-- <div class="doc-btn">
     <button class="doc-view"><a href="{% url 'blogList' %}">View Post</a></button>
-</div>
+</div> -->
 
 
 <div class="doctor-dashboard">
@@ -25,10 +25,6 @@
                 <p>State : {{current_user.state}}</p>
                 <p>Pincode : {{current_user.pincode}}</p>
             </div>
-        </div>
-
-        <div class="logout-btn">
-            <a href="{% url 'logout' %}" class="sub-mnu-link">Logout</a>
         </div>
     </div>
 </div>

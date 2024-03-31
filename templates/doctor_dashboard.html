@@ -3,11 +3,11 @@
 
 {% block body %}
 
-<div class="doc-btn">
+<!-- <div class="doc-btn">
     <button class="doc-create"><a href="{% url 'createPost' %}">Create Post</a></button>
     <button class="doc-view"><a href="{% url 'blogList' %}">View Post</a></button>
     <button class="doc-view"><a href="{% url 'draftList' %}">Drafts</a></button>
-</div>
+</div> -->
 
 <div class="doctor-dashboard">
     <div class="inner_page">
@@ -26,10 +26,6 @@
                 <p>State : {{current_user.state}}</p>
                 <p>Pincode : {{current_user.pincode}}</p>
             </div>
-        </div>
-
-        <div class="logout-btn">
-            <a href="{% url 'logout' %}" class="sub-mnu-link">Logout</a>
         </div>
     </div>
 </div>

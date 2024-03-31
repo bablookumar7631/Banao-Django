@@ -5,11 +5,19 @@
 
 {% block body %}
 
-<h1 class="auth-self">Authenticate Your Self</h1>
-<div class="basePage">
-    <div class="btn">
-        <button><a href="{% url 'login' %}">LOGIN</a></button>
-        <button><a href="{% url 'signup' %}">SIGN UP</a></button>
+<div class="indexPage">
+    <div class="image">
+        <img src="{% static 'images/indexImg.webp' %}" alt="">
+    </div>
+    <div class="punchline"> 
+        <div class="punchline-in">
+            {% if user.is_authenticated %}
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis blanditiis reprehenderit quas ex quae mollitia!</p>
+            {% else %}
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis blanditiis reprehenderit quas ex quae mollitia!</p>
+            <a href="{% url 'login' %}">Login / Signup</a>
+            {% endif %}
+        </div>
     </div>
 </div>
 

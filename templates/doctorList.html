@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{ % load static % }
+
+
+{% block body %}
+
+
+{% load static %}
+<div class="blogList">
+    <div class="bloglist-in">
+        {% for doc in doctors %}
+        <div class="singlePost">
+            <div class="left">
+                <img src="{{doc.profile_picture.url}}" alt="" />
+            </div>
+            <div class="right">
+                <p class="post-title Bp">Dr. {{doc.first_name}} {{doc.last_name}}</p>
+                <a class="Bp-btn" href="{% url 'appointment' doc.id %}">Book Appointment</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

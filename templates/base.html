@@ -11,6 +11,28 @@
 </head>
 <body>
 
+    <nav class="navbar">
+        <a class="brand_name" href="{% url 'index' %}"><p>BANAO</p></a>
+            <ul class="change-inner" id="mainnav">
+                <li class="change-1"><a href="{% url 'index' %}">Home</a></li>
+                {% if user.is_authenticated %} 
+                {% if current_user.designation == 'doctor' %}
+                <li class="change-1"><a href="{% url 'createPost' %}">Create Blog</a></li>
+                <li class="change-1"><a href="{% url 'draftList' %}">Drafts</a></li>
+                {% endif %}
+                {% endif %}
+                <li class="change-1"><a href="{% url 'blogList' %}">View Blogs</a></li>
+                <li class="change-1"><a href="{% url 'doctorList' %}">Doctors</a></li>
+                <li class="change-1"><a href="{% url 'appointmntList' %}">Your Appointments</a></li>
+                {% if user.is_authenticated %}
+                <li class="change-1"><a href="{% url 'logout' %}">Logout</a></li>
+                <p class="user_name"><a href="{% url 'doctor_dashboard' %}">Hello {{ user }}</a></p>
+                {% else %}
+                <!-- <li class="change-1"><a href="{% url 'login' %}">Login/Signup</a></li> -->
+                {% endif %}
+            </ul>
+    </nav>
+
     {% block body %}
     {% endblock body %}
 

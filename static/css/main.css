@@ -9,6 +9,116 @@ body{
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(14,14,131,1) 44%, rgba(0,212,255,1) 100%);
 }
+/* navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(82, 118, 132);
+    color: #fff;
+    padding: 0 100px;
+    font-weight: bolder;
+    height: 50px;
+    position: sticky;
+    z-index: 1;
+    top: 0;
+  }
+  
+  
+  .change-inner{
+    list-style: none;
+    display: flex;
+    font-size: 17px;
+  }
+  
+  .change-inner li{
+    padding: 0 20px;
+  }
+  
+  .change-inner li a{
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .brand_name{
+  font-size: 2rem;
+  font-weight: 900;
+  text-decoration: none;
+  color: orangered;
+  }
+  
+  
+  
+  .index_banner_img{
+    width: 100vw;
+    height: 70vh;
+    object-fit: fill;
+  }
+  
+  input{
+      background-color: white;
+      border: 0px;
+      outline: 0px;
+      border-radius: 5px;
+      padding: 8px;
+  
+  }
+  .user_name{
+    display: flex;
+    background-color: #fff;
+    color: #244e56;
+    padding: 1px 15px;
+    font-weight: 200;
+    border-radius: 10px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+/* index page */
+.indexPage{
+    position: relative;
+}
+.image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.image img{
+    width: 100%;
+    height: 93vh !important;
+    object-fit:cover;
+    object-position: center;
+}
+.punchline{
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 70%;
+    margin: auto;
+    z-index: 1;
+    font-size: 25px;
+    background-color: rgb(140, 173, 186);
+    padding: 3.5rem 3rem 3rem 3rem;
+    border-radius: 50%;
+}
+.punchline p{
+    margin-bottom: 1rem;
+}
+
+.punchline a{
+    font-size: large;
+    text-decoration: none;
+    background-color: rgba(95, 95, 95, 0.326);
+    color: #fff;
+    padding: .5rem 1rem;
+    border-radius: 5px;
+    outline: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
 
 /* home */
 .auth-self{
@@ -42,7 +152,7 @@ button a{
 }
 /* patient dashboard */
 .doctor-dashboard{
-    margin-top: 5rem;
+    margin-top: 1rem;
     display: flex;
     justify-content: center;
 }
@@ -72,32 +182,23 @@ button a{
 .info p{
     font-size: 1.5rem;
 }
-
-/* doctor */
-div.doc-btn{
-    top: 10px;
-    right: 10px;
-    position: absolute;
+/* book appointment */
+.right .Bp{
+    padding-bottom: 1rem;
 }
-.doc-create,.doc-view,.doc-logout{
-    background-color: aliceblue;
-    padding: .5rem 1.5rem;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-}
-.doc-create a,.doc-view a{
-    color: black;
-}
-.doc-logout{
-    background-color: rgb(255, 30, 30);
+.Bp-btn{
+    margin-top: .8rem;
+    text-decoration: none;
     color: #fff;
+    padding: .4rem 1rem;
+    border-radius: 5px;
+    background-color: rgb(80, 99, 80);
 }
 
 
 /* signup */
 .total{
-    margin-top: 7rem;
+    margin-top: 4rem;
 }
 .signup{
     background-color: rgb(140, 173, 186);
@@ -176,7 +277,7 @@ input{
     background-color: rgb(140, 173, 186);
     margin: 0 auto;
     padding: 2rem 3rem;
-    margin-top: 4rem;
+    margin-top: 2rem;
     border-radius: 15px;
 }
 .post-head{
@@ -228,7 +329,7 @@ input{
 
 /* blogList */
 .blogListSelect{
-    top: 10px;
+    top: 65px;
     right: 10px;
     position: fixed;
 }
@@ -238,7 +339,6 @@ input{
 .blogList{
     width: 50%;
     margin: 0 auto;
-    margin-top: 4rem;
     padding: 1rem;
 }
 

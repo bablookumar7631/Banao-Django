@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<div class="confirmation">
+    <h2>Your appointment has been scheduled:</h2>
+    <p><strong>Doctor's Name:</strong> {{ appointment.doctor_name }}</p>
+    <p><strong>Appointment Date:</strong> {{ appointment.appointment_date }}</p>
+    <p><strong>Appointment Start Time:</strong> {{ appointment.start_time }}</p>
+    <p><strong>Appointment End Time:</strong> {{ appointment.end_time }}</p>
+</div>
+
+{% endblock %}

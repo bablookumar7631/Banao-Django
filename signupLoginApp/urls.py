@@ -18,5 +18,7 @@ urlpatterns = [
     path('editDraft/<int:id>', views.editDraft, name='editDraft'),
     path('draftList', views.draftList, name='draftList'),
     
-
+    path('doctorList', views.doctorList_Page, name='doctorList'),
+    path('appointment/<int:id>', views.appointment_Page, name='appointment'),
+    path('appointmntList', views.appointmntList_Page, name='appointmntList'),
 ]

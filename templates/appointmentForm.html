@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{ % load static % }
+
+
+{% block body %}
+
+
+<div class="post-blog">
+    <h1 class="post-head">Book Your Appointment</h1>
+    <div class="post-blog-in">
+        <form action="" method="POST" enctype="multipart/form-data" id="appointForm">{% csrf_token %}
+            <div id="appointment-form">
+                <label for="speciality">Speciality:</label>
+                <input name="speciality" type="text" required>
+
+                <label for="date">Date of Appointment:</label>
+                <input type="date" id="date" name="date" required>
+                
+                <label for="start-time">Start Time of Appointment:</label>
+                <input type="time" id="start-time" name="start-time" required>
+
+                <input class="postBlog-btn" type="submit" value="Confirm">
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
